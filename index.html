@@ -2,7 +2,7 @@
 <html>
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title>首页-index.html</title> 
+  <title>深蓝科技</title> 
   <script type="text/javascript">
 		     if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i))) {  
                         location.replace("http://m.szfangwei.cn/");  
@@ -13,27 +13,32 @@
   <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script> 
   <script type="text/javascript" src="js/jquery.cycle.all.js"></script> 
   <script type="text/javascript" src="js/index.js"></script> 
+  <script type="text/javascript" src="js/qq3.js"></script> 
+  <script src="https://smtpjs.com/v3/smtp.js"></script> 
+  <script type="text/javascript" src="js/sendemail.js"></script> 
  </head> 
  <body> 
   <header> 
    <div class="header"> 
     <div class="top"> 
      <div class="top_con"> 
+     
+      <!-- <div class="weibo">
+       <a href="http://weibo.com/szfangwei" rel="noFollow" target="_blank"><img alt="微博" src="images/xinlang.png" align="absmiddle" /></a>
+      </div>  -->
+      <div class="tel">
+       咨询热线：187 1341 7921 / 176 1030 6792
+      </div> 
+      <div class="mail">
+       咨询邮箱：houzhanwu365@126.com / houzhanwu365@163.com
+      </div> 
       <div class="weixin" id="weixin" onMouseOver="show_weixin()" onMouseOut="hide_weixin()">
        <img alt="微信" src="images/weixin.png" align="absmiddle" /> 
        <div class="weixin_con" id="weixin_con" style="display:none">
         <img src="images/contact_weixin.gif" alt="微信二维码" />
        </div> 
       </div> 
-      <div class="weibo">
-       <a href="http://weibo.com/szfangwei" rel="noFollow" target="_blank"><img alt="微博" src="images/xinlang.png" align="absmiddle" /></a>
-      </div> 
-      <div class="tel">
-       咨询热线：400 800 9385
-      </div> 
-      <div class="mail">
-       咨询邮箱：sales@123.cn
-      </div> 
+      
       <div class="clear"></div> 
      </div> 
     </div> 
@@ -374,25 +379,53 @@
         <img src="images/weixin.png" alt="网站建设" />微信：网站建设
        </dd> 
       </dl> 
-      <form method="post" action="/Feedback"> 
+      <!-- <form method="post" action="/Feedback">  -->
        <dl class="footer_dl3"> 
         <dt>
          给我们留言
         </dt> 
         <dd> 
-         <input name="name" class="input" type="text" value="称呼（必填）" onFocus="if(this.value='称呼（必填）')this.value=''" onBlur="if(this.value=='')this.value=='称呼（必填）'" /> 
+         <input id="name" class="input" type="text" value="称呼（必填）" onFocus="if(this.value='称呼（必填）')this.value=''" onBlur="if(this.value=='')this.value=='称呼（必填）'" /> 
         </dd> 
         <dd> 
-         <input name="tel" class="input" type="text" value="电话（必填）" onFocus="if(this.value='电话（必填）')this.value=''" onBlur="if(this.value=='')this.value=='电话（必填）'" /> 
+         <input id="tel" class="input" type="text" value="电话（必填）" onFocus="if(this.value='电话（必填）')this.value=''" onBlur="if(this.value=='')this.value=='电话（必填）'" /> 
         </dd> 
         <dd> 
-         <textarea name="content" cols="" rows=""></textarea> 
+         <textarea id="content" cols="" rows=""></textarea> 
         </dd> 
         <dd>
-         <input type="image" alt="提交留言" src="images/submit_button.png" />
+         <input type="image" alt="提交留言" onclick="send()" src="images/submit_button.png" />
+         
+         
+       
+		<script type="text/javascript">
+			var name = "";
+			var tel = "";
+			var content = "";
+				
+			function send(){
+				name = $("#name").val();
+				tel = $("#tel").val();
+				content = $("#content").val();
+				var body = "姓名："+name+", 联系电话："+tel+", 咨询内容："+content;
+				sendEmail(body);
+			}
+			
+			function notify(message){
+				if(message == 'OK'){
+					alert("已经成功通知业务人员！业务人员会尽快和您联系，谢谢！");
+				}else{
+					//alert("发送失败！");
+					send();
+				}
+			}
+			
+			
+		
+	</script>
         </dd> 
        </dl> 
-      </form> 
+      <!-- </form>  -->
       <div class="clear"></div> 
      </div> 
      <div class="link">
